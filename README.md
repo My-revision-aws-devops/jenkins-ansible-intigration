@@ -13,7 +13,7 @@
       $ sudo adduser <user-name>
 
       ```
-      ![preview](images/010.png)
+      ![preview](images/010.PNG)
    3. give sudo privileges to the user.
       ```
       $ sudo vi /etc/sudoers
