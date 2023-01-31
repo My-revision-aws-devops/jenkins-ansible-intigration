@@ -38,32 +38,32 @@
       $ ssh <username>@publicIP
 
       ``` 
-      ![preview](images/013.png)
+      ![preview](images/013.PNG)
       It asks for password.enter  there.
    8. after successful login using password you see this.
-      ![preview](images/014.png)  
+      ![preview](images/014.PNG)  
    9. now create rsa key.
       ```
       $ ssh-keygen
       
       ```
-      ![preview](images/015.png)
+      ![preview](images/015.PNG)
    10. now copy this RSA key to ansible node.
        ```
        $ ssh-copy-id <ansible-node-user-name>@<ansible-node-ip>
        
        ```
        it request for password.
-       ![preview](images/016.png)  
+       ![preview](images/016.PNG)  
    11. After successful key sharing. we will see this message.
-       ![preview](images/017.png)
+       ![preview](images/017.PNG)
    12. Now try to login to ansible node.
        ```
        $  ssh <ansible-node-user-name>@<ansible-node-ip>
 
        ```
        it will login with out asking for password.
-       ![preview](images/018.png)
+       ![preview](images/018.PNG)
    13. now install ansible on Ansible master node.
        ```
        $ sudo apt update
@@ -73,16 +73,21 @@
        $ ansible --version
 
        ```  
-       ![preview](images/020.png)
-   14. Now ping with ansible node.
-       ![preview](images/021.png) 
-   15. Now install java11 on Ansible master node. 
+       ![preview](images/020.PNG)
+   14. Now create a hosts file with ansible node ip.
+       ```
+       vi hosts
+       ```
+       ![preview](images/019.PNG)  
+   15. Now ping with ansible node.
+       ![preview](images/021.PNG) 
+   16. Now install java11 on Ansible master node. 
        ```
         $ sudo apt update
         $ sudo apt install openjdk-11-jdk -y
 
        ``` 
-   16. Now Ansible master node is ready to integrate with Jenkis Master node.  
+   17. Now Ansible master node is ready to integrate with Jenkis Master node.  
    
 2. Take another EC2 instances
     ---
@@ -112,7 +117,7 @@
         $ sudo vi /etc/sudoers
 
        ```
-       ![preview](images/002.png)
+       ![preview](images/002.PNG)
 
     5. Now open jenkins UI in browser.
         ```
@@ -122,23 +127,23 @@
 
     6. Now we have to unlock jenkins.
     7. you will find initial password here
-        ![preview](images/004.png)
+        ![preview](images/004.PNG)
        
        ```
        $ sudo vi /var/lib/jenkins/secrets/initialAdminPassword
 
        ```
-       ![preview](/images/005.png)
+       ![preview](/images/005.PNG)
     8. now enter initial password in jenkins ui.
-        ![preview](images/006.png)
+        ![preview](images/006.PNG)
     9. click on install suggested plugins.
-        ![preview](images/007.png)
+        ![preview](images/007.PNG)
     10. create Admin user 
-        ![preview](images/008.png)
+        ![preview](images/008.PNG)
     11. click start using Jeninks
-        ![preview](images/009.png)
+        ![preview](images/009.PNG)
     12. After sucessfull login.  you get this page.
-        ![preview](images/022.png)
+        ![preview](images/022.PNG)
     13. For making Node configuration follow the below steps.
         * click on > manage jenkins
           ![preview](images/023.png)
