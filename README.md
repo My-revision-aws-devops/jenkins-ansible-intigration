@@ -117,7 +117,7 @@
         $ sudo vi /etc/sudoers
 
        ```
-       ![preview](images/002.PNG)
+       ![preview](images/002.png)
 
     5. Now open jenkins UI in browser.
         ```
@@ -170,3 +170,110 @@
           ![preview](images/035.png)
           ![preview](images/036.png)
           ![preview](images/037.png)
+        * to check status of the build click here
+          ![preview](images/038.png)
+        * click on console output
+          ![preview](images/039.png)
+          ```  
+            Started by user satya
+            Obtained Jenkinsfile from git https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git
+            [Pipeline] Start of Pipeline
+            [Pipeline] node
+            Running on Ansible_Master in /home/ansible/remote_root/workspace/apache_Installation
+            [Pipeline] {
+            [Pipeline] stage
+            [Pipeline] { (Declarative: Checkout SCM)
+            [Pipeline] checkout
+            Selected Git installation does not exist. Using Default
+            The recommended git tool is: NONE
+            No credentials specified
+            Cloning the remote Git repository
+            Cloning repository https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git
+            > git init /home/ansible/remote_root/workspace/apache_Installation # timeout=10
+            Fetching upstream changes from https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git
+            > git --version # timeout=10
+            > git --version # 'git version 2.34.1'
+            > git fetch --tags --force --progress -- https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+            > git config remote.origin.url https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git # timeout=10
+            > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+            Avoid second fetch
+            Checking out Revision 4bd5e46bfe80fbc3e4cf0dec8df1f1c033b61c29 (refs/remotes/origin/main)
+            > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+            > git config core.sparsecheckout # timeout=10
+            > git checkout -f 4bd5e46bfe80fbc3e4cf0dec8df1f1c033b61c29 # timeout=10
+            Commit message: "3rd commit till build"
+            First time build. Skipping changelog.
+            [Pipeline] }
+            [Pipeline] // stage
+            [Pipeline] withEnv
+            [Pipeline] {
+            [Pipeline] stage
+            [Pipeline] { (vcs)
+            [Pipeline] git
+            Selected Git installation does not exist. Using Default
+            The recommended git tool is: NONE
+            No credentials specified
+            Fetching changes from the remote Git repository
+            Checking out Revision 4bd5e46bfe80fbc3e4cf0dec8df1f1c033b61c29 (refs/remotes/origin/main)
+            Commit message: "3rd commit till build"
+            Post stage
+            [Pipeline] echo
+            ========A executed successfully========
+            [Pipeline] }
+            > git rev-parse --resolve-git-dir /home/ansible/remote_root/workspace/apache_Installation/.git # timeout=10
+            > git config remote.origin.url https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git # timeout=10
+            Fetching upstream changes from https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git
+            > git --version # timeout=10
+            > git --version # 'git version 2.34.1'
+            > git fetch --tags --force --progress -- https://github.com/My-revision-aws-devops/jenkins-ansible-intigration.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+            > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+            > git config core.sparsecheckout # timeout=10
+            > git checkout -f 4bd5e46bfe80fbc3e4cf0dec8df1f1c033b61c29 # timeout=10
+            > git branch -a -v --no-abbrev # timeout=10
+            > git checkout -b main 4bd5e46bfe80fbc3e4cf0dec8df1f1c033b61c29 # timeout=10
+            [Pipeline] // stage
+            [Pipeline] stage
+            [Pipeline] { (executing Ansible play book)
+            [Pipeline] sh
+            + ansible-playbook -i hosts apache-playbook.yaml
+
+            PLAY [playbook for installing ansible] *****************************************
+
+            TASK [Gathering Facts] *********************************************************
+            ok: [172.31.8.131]
+
+            TASK [installing apache2] ******************************************************
+            changed: [172.31.8.131]
+
+            PLAY RECAP *********************************************************************
+            172.31.8.131               : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+            Post stage
+            [Pipeline] echo
+            ========Playbook executed successfully========
+            [Pipeline] }
+            [Pipeline] // stage
+            [Pipeline] stage
+            [Pipeline] { (Declarative: Post Actions)
+            [Pipeline] echo
+            ========pipeline executed successfully ========
+            [Pipeline] }
+            [Pipeline] // stage
+            [Pipeline] }
+            [Pipeline] // withEnv
+            [Pipeline] }
+            [Pipeline] // node
+            [Pipeline] End of Pipeline
+            Finished: SUCCESS
+          ```
+        * if build is successful.
+          ![preview](images/040.png)
+        * Now check for apache Installatin is successful or not.
+        * browse the link to check apache 
+          ```
+          http://<ansible-node-publicIp>
+          ```
+          ![preview](images/041.png)
+        * Installation is successful.
+  ---
+
